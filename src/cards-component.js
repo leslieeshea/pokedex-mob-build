@@ -1,4 +1,4 @@
-export default function makeCardTemplate(card) {
+export function makeCardTemplate(card) {
     const html = 
     `<li style="background-color: ${card.color_1}">
     <h3>${card.pokemon}<div class="type-2" style="background-color: ${card.color_2}"></div></h3>
@@ -13,5 +13,14 @@ export default function makeCardTemplate(card) {
     const template = document.createElement('template');
     template.innerHTML = html;
     return template.content;
+}
+
+export default function loadCards(pokedex) {
+    const pokemonCards = document.getElementById('pokemon-cards');
+    
+    pokedex.forEach(card => {
+        const dom = makeCardTemplate(card);
+        pokemonCards.appendChild(dom);
+    });
 }
 

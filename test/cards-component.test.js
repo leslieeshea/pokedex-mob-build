@@ -1,4 +1,4 @@
-import makeCardTemplate from '../src/cards-component.js';
+import { makeCardTemplate } from '../src/cards-component.js';
 const test = QUnit.test;
 
 const card = {
