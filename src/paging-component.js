@@ -10,12 +10,9 @@ export default function loadPaging(totalCount) {
     totalPagesSpan.textContent = totalPageCount;
 
     let currentPageNumber = 1;
-    currentPageSpan.textContent = currentPageNumber;
+    updatePaging();
 
-    previousButton.disabled = currentPageNumber === 1;
-
-    nextButton.addEventListener('click', () => {
-        currentPageNumber++;
+    function updatePaging() {
         currentPageSpan.textContent = currentPageNumber;
 
         const pageOptions = {
@@ -27,18 +24,15 @@ export default function loadPaging(totalCount) {
         previousButton.disabled = currentPageNumber === 1;
 
         console.log(pageOptions);
+    }
+
+    nextButton.addEventListener('click', () => {
+        currentPageNumber++;
+        updatePaging();
     });
 
     previousButton.addEventListener('click', () => {
         currentPageNumber--;
-        currentPageSpan.textContent = currentPageNumber;
-
-        const pageOptions = {
-            page: currentPageNumber,
-            perPage: PER_PAGE
-        };
-
-        previousButton.disabled = currentPageNumber === 1;
-        nextButton.disabled = currentPageNumber === totalPageCount;
+        updatePaging();
     });
 }
