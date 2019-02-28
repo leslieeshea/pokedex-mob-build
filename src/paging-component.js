@@ -5,7 +5,7 @@ const totalPagesSpan = document.getElementById('total-pages');
 
 const PER_PAGE = 20;
 
-export default function loadPaging(totalCount) {
+export default function loadPaging(totalCount, callback) {
     const totalPageCount = Math.ceil(totalCount / PER_PAGE);
     totalPagesSpan.textContent = totalPageCount;
 
@@ -23,7 +23,7 @@ export default function loadPaging(totalCount) {
         nextButton.disabled = currentPageNumber === totalPageCount;
         previousButton.disabled = currentPageNumber === 1;
 
-        console.log(pageOptions);
+        callback(pageOptions);
     }
 
     nextButton.addEventListener('click', () => {

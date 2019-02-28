@@ -5,4 +5,6 @@ import loadCards from './cards-component.js';
 
 loadCards(pokedex);
 
-loadPaging(pokedex.length);
+loadPaging(pokedex.length, pagingOptions => {
+    console.log(pagingOptions);
+});
