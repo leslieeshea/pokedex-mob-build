@@ -17,7 +17,10 @@ export function makeCardTemplate(card) {
 
 export default function loadCards(pokedex) {
     const pokemonCards = document.getElementById('pokemon-cards');
-    
+    while(pokemonCards.firstChild) {
+        pokemonCards.firstChild.remove();
+    }
+
     pokedex.forEach(card => {
         const dom = makeCardTemplate(card);
         pokemonCards.appendChild(dom);
